@@ -2,86 +2,164 @@
 import java.util.ArrayList;
 import java.util.*;
 
-class Person {
-   	private String name;
-   	private String Address;
-   	private String phoneNumber;
-   	private String email;
+ class Person {
+	  private String firstname;
+	  private String lastname;
+	  private String address;
+	  private String city;
+	  private String state;
+	  private String zip;
+	  private String phoneNumber;
+	  private String emailId;
 
-    	public String getname() {
-        	return name;
-    	}
-    	public void setname(String name) {
-        	this.name = name;
-    	}
+	  public String getFirstname() {
+           return firstname;
+          }
+          public String setFirstname(String name) {
+           this.firstname = name;
+           return name;
+	  }
 
-    	public String getAddress() {
-        	return Address;
-    	}
-    	public void setAddress(String Address) {
-        	this.Address = Address;
-    	}
-    	public String getphoneNumber() {
-        	return phoneNumber;
-    	}
-    	public void setphoneNumber(String phoneNumber) {
-        	this.phoneNumber = phoneNumber;
-    	}
+	  public String getLastname() {
+	   return lastname;
+          }
+          public void setLastname(String lastname) {
+           this.lastname = lastname;
+          }
 
-    	public String getemail() {
-        	return email;
-    	}
-    	public void setemail(String email) {
-        	this.email = email;
-    	}
+	  public String getAddress() {
+           return address;
+          }
+          public void setAddress(String Address) {
+           this.address = Address;
+          }
 
+          public String getCity() {
+           return city;
+          }
+          public void setCity(String city) {
+	   this.city = city;
+          }
+          public String getState() {
+	   return state;
+	  }
+          public void setState(String state) {
+           this.state = state;
+          }
 
-  	@Override
-    	public String toString() {
-        return "Person [name=" + name + "Address="+ Address + "phoneNumber=" + phoneNumber + "emailId=" + email +"]";
-    	}
+          public String getZip() {
+           return zip;
+          }
+	  public void setZip(String zip) {
+           this.zip = zip;
+	  }
 
-   public void PersonInfo() {
-    	ArrayList<Person> list=new ArrayList<Person>();
-    	Person P1=new Person();
-    	Scanner s=new Scanner(System.in);
+          public String getphoneNumber() {
+           return phoneNumber;
+	  }
+	  public void setphoneNumber(String phoneNumber) {
+	   this.phoneNumber = phoneNumber;
+	  }
 
-    	System.out.println("Enter Name: ");
-     	P1.setname(s.nextLine());
-    	System.out.println("Enter Address: ");
-     	P1.setAddress(s.nextLine());
-    	System.out.println("Enter phoneNumber: ");
-     	P1.setphoneNumber(s.nextLine());
-    	System.out.println("Enter email ID: ");
-     	P1.setemail(s.nextLine());
+	  public String getemail() {
+	   return emailId;
+	  }
+	  public void setemail(String email) {
+	   this.emailId = email;
+	  }
 
-    	list.add (P1);
-    	System.out.println(list);
-   }
+	  @Override
+	  public String toString() {
+          return " " + firstname + " " + lastname +" "+ address + " " + city + " " + state + " " + zip + " "+ phoneNumber + " " + emailId +"";
+          }
+}
+
+class PersonInfoOperations {
+	 
+	   static Scanner s=new Scanner(System.in);
+	
+	   public static void addContact(List<Person> persons) {
+	            Person P = new Person();
+
+			    System.out.println("Enter Firstname"); 
+			    P.setFirstname(s.nextLine());
+			    System.out.println("Enter Lastname"); 
+			    P.setLastname(s.nextLine());
+			    System.out.println("Enter Address");
+			    P.setAddress(s.nextLine());
+			    System.out.println("Enter City");
+			    P.setCity(s.nextLine());
+			    System.out.println("Enter State");
+			    P.setState(s.nextLine());
+			    System.out.println("Enter Zip");
+			    P.setZip(s.nextLine());
+			    System.out.println("Enter PhoneNumber");
+			    P.setphoneNumber(s.nextLine());
+			    System.out.println("Enter EmailId");
+			    P.setemail(s.nextLine());
+
+			    persons.add(P);
+			    System.out.println(persons);
+	   }
+
+	   public static void EditContact(List<Person> distinctEntries) {
+			System.out.println("Enter first name that you want to Edit:");
+			String firstName = s.nextLine();
+			Person selectedPerson = null;
+			for (int i = 0; i < distinctEntries.size(); i++) {
+				if (firstName.equals(distinctEntries.get(i).getFirstname())) {
+	            		       selectedPerson = distinctEntries.get(i);
+	       			       break;
+				}  
+			}  
+			if (selectedPerson != null) {
+			    	System.out.println("Enter new Firstname"); 
+			    	selectedPerson.setFirstname(s.nextLine());
+			        System.out.println("Enter new Lastname"); 
+			        selectedPerson.setLastname(s.nextLine());
+			        System.out.println("Enter new Address");
+			        selectedPerson.setAddress(s.nextLine());
+			        System.out.println("Enter new City");
+			        selectedPerson.setCity(s.nextLine());
+			        System.out.println("Enter new State");
+			        selectedPerson.setState(s.nextLine());
+			        System.out.println("Enter new Zip");
+			        selectedPerson.setZip(s.nextLine());
+			        System.out.println("Enter new PhoneNumber");
+			        selectedPerson.setphoneNumber(s.nextLine());
+			        System.out.println("Enter new EmailId");
+			        selectedPerson.setemail(s.nextLine());
+			        System.out.println(distinctEntries);   
+			  }	
+			  else {
+			        System.out.println("Invalid Name!Not Exist");
+			  }
+	     }
+
 
 }
 
 public class AddressBookProgram {
-     public static void main(String[] args) {
-   	Scanner s=new Scanner(System.in);
-   	int ch;
-   	String name;
-    	while(true){
-     	System.out.println("Enter 1 to add\n Enter 2 to exit\n");
-      	name=s.next();
-       	ch = Integer.parseInt(name);
-         switch (ch){
-          case 1:
-             System.out.println("Give the information for the Person");
-             Person A1 =new Person();
-             A1.PersonInfo();
-             break;
-          case 2:
-             System.exit(0);
-          break;
-        }
-      }
-  }
+
+   public static void main(String[] args) {	
+	Scanner s= new Scanner(System.in);
+	int choice;
+
+	ArrayList<Person> persons=new ArrayList<> ();
+	System.out.println(" Enter 1 to Add Contact\n Enter 2 to Edit Contact\n Enter 3 to Exit\n");
+	choice=s.nextInt();
+        switch (choice) 
+        {
+	 case 1:
+	        PersonInfoOperations.addContact(persons);
+		break;
+	 case 2:
+	        PersonInfoOperations.EditContact(persons);
+	        break;
+          case 3:
+	        System.exit(0);
+	        break;
+
+	 }
+    }
 }
-
-
