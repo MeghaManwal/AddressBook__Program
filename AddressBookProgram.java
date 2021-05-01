@@ -136,6 +136,27 @@ class PersonInfoOperations {
 			  }
 	     }
 
+             public static void DeleteContact(List<Person> persons) {
+			  System.out.println("Enter first name that you want to Delete:");
+			  String firstName = s.nextLine();
+
+   			  Person selectedPerson = null;
+			  for (int i = 0; i < persons.size(); i++) {
+				if (firstName.equals(persons.get(i).getFirstname())) {
+				    selectedPerson = persons.get(i);
+				    break;
+				 }  
+			   }
+                          if (selectedPerson != null) {	
+				 persons.remove(selectedPerson);
+				 System.out.println("Successfully Deleted!\n");
+				 System.out.println(persons); 
+			   }	
+			   else {
+				 System.out.println("Invalid Name!Not Exist");
+			   }
+	    }
+
 
 }
 
@@ -146,7 +167,7 @@ public class AddressBookProgram {
 	int choice;
 
 	ArrayList<Person> persons=new ArrayList<> ();
-	System.out.println(" Enter 1 to Add Contact\n Enter 2 to Edit Contact\n Enter 3 to Exit\n");
+	System.out.println(" Enter 1 to Add Contact\n Enter 2 to Edit Contact\n Enter 3 to Delete Contact \n Enter 4 to Exit\n");
 	choice=s.nextInt();
         switch (choice) 
         {
@@ -156,7 +177,10 @@ public class AddressBookProgram {
 	 case 2:
 	        PersonInfoOperations.EditContact(persons);
 	        break;
-          case 3:
+         case 3:
+       	        PersonInfoOperations.DeleteContact(persons);
+	        break;
+         case 4:
 	        System.exit(0);
 	        break;
 
