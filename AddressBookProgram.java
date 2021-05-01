@@ -172,7 +172,11 @@ public class AddressBookProgram {
         switch (choice) 
         {
 	 case 1:
+                System.out.println("Enter the Number of Contacts you would like to add");
+		int n=s.nextInt();
+		for(int i=0;i<n;i++) {
 	        PersonInfoOperations.addContact(persons);
+                }
 		break;
 	 case 2:
 	        PersonInfoOperations.EditContact(persons);
